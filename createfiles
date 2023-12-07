@@ -7,7 +7,6 @@ def createfiles():
            f.write(large_file)
         return "Files written!"
     except Exception as e:
-        # Handle any exceptions that occur during the creation of the zip bomb
         return f"Problems writing files: {str(e)}"
 
 result = createfiles()
