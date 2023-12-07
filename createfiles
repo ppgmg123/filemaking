@@ -18,6 +18,5 @@ def createfiles():
         # Handle any exceptions that occur during the creation of the zip bomb
         return f"Problems writing files: {str(e)}"
 
-# Create the 2 TB zip bomb
 result = createfiles()
 print(result)
