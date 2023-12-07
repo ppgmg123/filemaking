@@ -1,0 +1,23 @@
+def createfiles():
+    """
+    Function to create a 2 TB zip bomb.
+
+    Returns:
+    - str:
+        Returns a message indicating the successful creation of the zip bomb.
+    """
+
+    try:
+        # Create a large file of 1 GB
+        large_file = bytearray(1024 * 1024 * 1024)  # 1 GB
+        for i in range(1024):
+           f = open(f'{i}', "wb")
+           f.write(large_file)
+        return "Files written!"
+    except Exception as e:
+        # Handle any exceptions that occur during the creation of the zip bomb
+        return f"Problems writing files: {str(e)}"
+
+# Create the 2 TB zip bomb
+result = createfiles()
+print(result)
