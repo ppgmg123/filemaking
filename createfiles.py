@@ -14,7 +14,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 3:
         result = createfiles(sys.argv[1], sys.argv[2])
         print(result)
-else:
-    print ('Usage:\n')
-		print ('createfiles.py files_amount bytes')
-		exit()
+    else:
+    	print ('Usage:\n')
+    	print ('createfiles.py files_amount bytes')
+    	exit()
