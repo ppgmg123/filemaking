@@ -1,3 +1,4 @@
+import sys
 def createfiles(files_amount, bytes):
     try:
         # Create a large file of 1 GB
@@ -9,5 +10,11 @@ def createfiles(files_amount, bytes):
     except Exception as e:
         return f"Problems writing files: {str(e)}"
 
-result = createfiles(1024, 1024)
-print(result)
+if __name__ == '__main__':
+    if len(sys.argv) > 3:
+        result = createfiles(sys.argv[1], sys.argv[2])
+        print(result)
+else:
+    print ('Usage:\n')
+		print ('createfiles.py files_amount bytes')
+		exit()
