@@ -1,8 +1,8 @@
 import sys
+import argparse
 def createfiles(files_amount, bytes):
     try:
-        # Create a large file of 1 GB
-        large_file = bytearray(bytes * bytes * bytes)  # 1 GB
+        large_file = bytearray(bytes * 1024 * 1024)
         for i in range(files_amount):
            f = open(f'{i}', "wb")
            f.write(large_file)
@@ -10,11 +10,21 @@ def createfiles(files_amount, bytes):
     except Exception as e:
         return f"Problems writing files: {str(e)}"
 
+def parsing():
+    parser = argparse.ArgumentParser(
+                    prog='Create Files',
+                    description='Create files',
+                    epilog='createfiles.py files_amount bytes')
+    parser.add_argument('files_amount', help='decides how many files to create.', type=amount)
+    parser.add_argument('bytes', help='decides how many bytes should the file use.', type=bytes)
+    return parser.parse_args()
+    
+def totallyrandom():
+    for arg in sys.argv:
+        print(arg) 
+        
 if __name__ == '__main__':
-    if len(sys.argv) > 3:
-        result = createfiles(sys.argv[1], sys.argv[2])
-        print(result)
-    else:
-    	print ('Usage:\n')
-    	print ('createfiles.py files_amount bytes')
-    	exit()
+    totallyrandom()
+    args = parsing()
+    result = createfiles(args.files_amount, args.bytes)
+    print(result)
