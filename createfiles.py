@@ -1,19 +1,19 @@
 import argparse
 import os
 
-def createfiles(files_amount, byte, megabytes, path):
+def createfiles(files_amount, byte, megabytes, extension, path):
     large_file = 0
     
     if path == " ":
         path = os.path.abspath(os.getcwd())
     
     if megabytes == True:
-        large_file = bytearray(byte * 1024 * 1024)
+        large_file = bytes(byte * 1024 * 1024)
     else:
         large_file = bytes(byte)
         
-    for i in range(1 , files_amount+1):
-        f = open(f'{os.path.join(path, f"{i}")}', "wb")
+    for amount in range(1 , files_amount+1):
+        f = open(f'{os.path.join(path, f"{amount}")}'+f'{extension}', "wb")
         f.write(large_file)
         f.close()
             
@@ -28,10 +28,12 @@ def parsing():
     parser.add_argument('bytes', help='decides how many bytes should the file use.',type=int)
     parser.add_argument('-m','--megabytes',help="decides if the input should be counted in megabytes instead of bytes.",
                     action='store_true')
-    parser.add_argument('path',nargs='?', help='decides the path of the files. The default path is the path of this file.',default="")
+    parser.add_argument('-e','--extension',nargs='?', help='decides the extension of the files. This can also be used to add the name of the files at the end of its number.',default="")
+    parser.add_argument('-p','--path',nargs='?', help='decides the path of the files. The default path is the path of this file.',default="")
     return parser.parse_args()
 
 if __name__ == '__main__':
     args = parsing()
-    result = createfiles(args.files_amount, args.bytes, args.megabytes, args.path)
+    print(args)
+    result = createfiles(args.files_amount, args.bytes, args.megabytes, args.extension, args.path)
     print(result)
