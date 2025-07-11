@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 path = os.path.abspath(os.getcwd())
-filepath = os.path.join(path, "mandelbrot")
+filepath = os.path.join(path, "mandelbrot.txt")
 
 repetition = 30
 def mandelbrot(c):
